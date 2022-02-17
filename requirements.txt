@@ -1,0 +1,7 @@
+aiogram
+logging
+uuid
+psycopg2
+contextlib
+datetime
+Flask
