@@ -3,4 +3,3 @@ asyncio
 datetime
 uuid
 psycopg2
-logging
