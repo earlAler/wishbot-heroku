@@ -313,7 +313,7 @@ try:
     if __name__ == "__main__":
         start_webhook (
             dispatcher = dp,
-            webhook_path = WEBHOOK_PATH,
+            webhook_path = '',
             on_startup=on_startup,
             on_shutdown = on_shutdown,
             skip_updates = True,
