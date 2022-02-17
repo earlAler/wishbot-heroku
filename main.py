@@ -286,6 +286,14 @@ try:
             await state.finish()
 
 
+    async def on_startup(dp):
+        await bot.set_webhook(config.APP_URL)
+
+    async def on_shutdown(dp):
+        logging.warning('Shutting down..')
+        await bot.delete_webhook()
+        await dp.storage.close()
+        await dp.storage.wait_closed()
 
     # @dp.message_handler(state=Form.img)
     # async def topic_text(message: types.Message, state: FSMContext):
@@ -309,8 +317,8 @@ try:
         start_webhook (
             dispatcher = dp,
             webhook_path = '',
-            # on_startup=on_startup,
-            # on_shutdown = on_shutdown,
+            on_startup=on_startup,
+            on_shutdown = on_shutdown,
             skip_updates = True,
             host = "127.0.0.1",
             port = os.environ.get('PORT')
@@ -318,7 +326,7 @@ try:
         # bot.remove_webhook()
         # bot.set_webhook(url = config.APP_URL)
         # server.run(host = '0.0.0.0', port = int(os.environ.get("PORT", 5000))
-        executor.start_polling(dp, skip_updates=True)
+        # executor.start_polling(dp, skip_updates=True)
 
 
 except Exception as exc:
