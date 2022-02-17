@@ -1,7 +1,6 @@
 aiogram
 asyncio
 datetime
-contextlib
 uuid
 psycopg2
 logging
