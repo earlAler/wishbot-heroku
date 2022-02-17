@@ -30,9 +30,9 @@ try:
     # server = flask(__name__)
     dp = Dispatcher(bot, storage=MemoryStorage())
     logging.basicConfig(level=logging.INFO)
-    WEBHOOK_HOST = 'https://'  # name your app
-    WEBHOOK_PATH = '/webhook/'
-    WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
+    # WEBHOOK_HOST = 'https://'  # name your app
+    # WEBHOOK_PATH = '/webhook/'
+    # WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
     callback_direct = CallbackData("enum", "action")
 
@@ -312,13 +312,13 @@ try:
             # on_startup=on_startup,
             # on_shutdown = on_shutdown,
             skip_updates = True,
-            host = '0.0.0.0',
+            host = "127.0.0.1",
             port = os.environ.get('PORT')
         )
         # bot.remove_webhook()
         # bot.set_webhook(url = config.APP_URL)
         # server.run(host = '0.0.0.0', port = int(os.environ.get("PORT", 5000))
-        # executor.start_polling(dp, skip_updates=True)
+        executor.start_polling(dp, skip_updates=True)
 
 
 except Exception as exc:
