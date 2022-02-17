@@ -30,9 +30,9 @@ try:
     # server = flask(__name__)
     dp = Dispatcher(bot, storage=MemoryStorage())
     logging.basicConfig(level=logging.INFO)
-    # WEBHOOK_HOST = 'https://'  # name your app
-    # WEBHOOK_PATH = '/webhook/'
-    # WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
+    WEBHOOK_HOST = """https://boxwishesbot.herokuapp.com/"""
+    WEBHOOK_PATH = """/main.py"""
+    WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
     callback_direct = CallbackData("enum", "action")
 
@@ -45,9 +45,6 @@ try:
         img = State()
         # fin = State()
         back = State()
-
-
-
 
 
     def get_keyboard():  # Кнопки направления завки
@@ -287,7 +284,7 @@ try:
 
 
     async def on_startup(dp):
-        await bot.set_webhook(config.APP_URL)
+        await bot.set_webhook(WEBHOOK_URL)
 
     async def on_shutdown(dp):
         logging.warning('Shutting down..')
@@ -316,11 +313,11 @@ try:
     if __name__ == "__main__":
         start_webhook (
             dispatcher = dp,
-            webhook_path = '',
+            webhook_path = WEBHOOK_PATH,
             on_startup=on_startup,
             on_shutdown = on_shutdown,
             skip_updates = True,
-            host = "127.0.0.1",
+            host = '0.0.0.0',
             port = os.environ.get('PORT')
         )
         # bot.remove_webhook()
