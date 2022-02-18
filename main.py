@@ -31,7 +31,7 @@ try:
     dp = Dispatcher(bot, storage=MemoryStorage())
     logging.basicConfig(level=logging.INFO)
     WEBHOOK_HOST = f'https://boxwishesbot.herokuapp.com/'
-    WEBHOOK_PATH = f'/webhook/{config.BOT_TOKEN}'
+    WEBHOOK_PATH = f'/{config.BOT_TOKEN}'
     WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
     callback_direct = CallbackData("enum", "action")
