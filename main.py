@@ -15,8 +15,6 @@ from contextlib import suppress
 from datetime import datetime
 # from flask import flask, request
 
-
-
 try:
 
     conn = psycopg2.connect(host=config.host,
@@ -320,10 +318,10 @@ try:
 
 except Exception as exc:
     print("Error while working: ", exc)
-finally:
-    if conn:
-        conn.close()
-        print("Connection closed")
+# finally:
+#     if conn:
+#         conn.close()
+#         print("Connection closed")
 
-#user_data = {}
+
 
