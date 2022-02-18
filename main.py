@@ -17,11 +17,12 @@ from datetime import datetime
 
 try:
 
-    conn = psycopg2.connect(host=config.host,
-                            user=config.user,
-                            password=config.password,
-                            port=config.port,
-                            database=config.db_name)
+    # conn = psycopg2.connect(host=config.host,
+    #                         user=config.user,
+    #                         password=config.password,
+    #                         port=config.port,
+    #                         database=config.db_name)
+    conn = psycopg2.connect()
     conn.autocommit = True
 
     bot = Bot(token=config.BOT_TOKEN)
@@ -313,7 +314,7 @@ try:
         # bot.remove_webhook()
         # bot.set_webhook(url = config.APP_URL)
         # server.run(host = '0.0.0.0', port = int(os.environ.get("PORT", 5000))
-        # executor.start_polling(dp, skip_updates=True)
+        executor.start_polling(dp, skip_updates=True)
 
 
 except Exception as exc:
