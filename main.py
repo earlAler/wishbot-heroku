@@ -30,9 +30,9 @@ try:
     # server = flask(__name__)
     dp = Dispatcher(bot, storage=MemoryStorage())
     logging.basicConfig(level=logging.INFO)
-    WEBHOOK_HOST = "https://boxwishesbot.herokuapp.com/"
-    WEBHOOK_PATH = ""
-    WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
+    WEBHOOK_HOST = f'https://boxwishesbot.herokuapp.com/'
+    WEBHOOK_PATH = f'/webhook/{config.BOT_TOKEN}'
+    WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
     callback_direct = CallbackData("enum", "action")
 
@@ -284,7 +284,8 @@ try:
 
 
     async def on_startup(dp):
-        await bot.set_webhook(WEBHOOK_URL)
+        logging.warning('Starting connection. ')
+        await bot.set_webhook(WEBHOOK_URL, drop_pending_updates=True)
 
     async def on_shutdown(dp):
         logging.warning('Shutting down..')
@@ -313,7 +314,7 @@ try:
     if __name__ == "__main__":
         start_webhook (
             dispatcher = dp,
-            webhook_path = '',
+            webhook_path = WEBHOOK_PATH,
             on_startup=on_startup,
             on_shutdown = on_shutdown,
             skip_updates = True,
