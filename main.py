@@ -180,7 +180,7 @@ try:
                 user_data["Text"] = message.text
                 # user_data["img"] = message.photo[0].file_id
                 user_data["UID"] = str(uuid.uuid1())
-                user_data["Datetime"] = datetime.now(tz=None)+3
+                user_data["Datetime"] = datetime.now(tz=None)+datetime.timedelta(hours = 3)  # по времени gmt+3
             await Form.next()
             await message.answer("Желаете прикрепить изображение?", reply_markup=get_option())
 
