@@ -301,16 +301,6 @@ try:
     #         await message.answer("Желаете прикрепить изображение или файл:", reply_markup=get_back())
     #         await Form.next()
 
-
-
-    @dp.callback_query_handler(text="value1")
-    async def send_random_value(call: types.CallbackQuery):
-        print(call.from_user.first_name)
-        await call.message.answer("Вот это да")
-        await call.answer()  # чтобы не ждал
-
-
-
     if __name__ == "__main__":
         start_webhook (
             dispatcher = dp,
