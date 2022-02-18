@@ -12,7 +12,7 @@ from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.utils.executor import start_webhook
 from contextlib import suppress
-from datetime import datetime
+from datetime import datetime, timedelta
 # from flask import flask, request
 
 try:
